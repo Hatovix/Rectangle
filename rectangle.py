@@ -291,6 +291,20 @@ class Rectangle:
             a pretty version of the given point
         """
         return f'{name} ({round(point[0], 3)};{round(point[1], 3)})'
+    
+    def __eq__(self, other: 'Rectangle') -> bool:
+        """
+        Rectangle equality comparison.
+
+        Returns
+        ----------
+        bool
+            the equality comparison result
+        """
+        return self.get_center() == other.get_center() \
+               and self.radius == other.get_radius() \
+               and (self.alpha_angle == other.get_alpha_angle() and self.beta_angle == other.get_beta_angle()
+                    or self.alpha_angle == other.get_beta_angle() and self.beta_angle == other.get_alpha_angle())
 
     def __str__(self) -> str:
         """
